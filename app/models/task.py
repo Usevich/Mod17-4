@@ -1,7 +1,10 @@
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 from sqlalchemy.orm import relationship
 from app.backend.db import Base, engine
-#from app.models.user import User
+from sqlalchemy.schema import CreateTable
+# from app.models.user import User
+
+
 class Task(Base):
     __tablename__ = 'tasks'
     __table_args__ = {'extend_existing': True}
@@ -13,14 +16,14 @@ class Task(Base):
     user_id = Column(Integer, ForeignKey('users.id'))
     slug = Column(String, unique=True, index=True)
     
-    user = relationship("User", back_populates="tasks")
+    users = relationship("User", back_populates="tasks")
     
     def __repr__(self):
         return f"gh"
 
 
-#from sqlalchemy import Table
-from sqlalchemy.schema import CreateTable
-#tasks_table = Table('tasks', Base.metadata)
-print(CreateTable(Task.__table__ ))
-#print(CreateTable(tasks_table).compile(engine))
+# from sqlalchemy import Table
+
+# tasks_table = Table('tasks', Base.metadata)
+print(CreateTable(Task.__table__))
+# print(CreateTable(tasks_table).compile(engine))

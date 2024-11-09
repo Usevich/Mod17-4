@@ -1,4 +1,5 @@
-from .db import  Session
+from .db import Session
+
 
 async def get_db():
     db = Session()
