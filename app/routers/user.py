@@ -18,7 +18,7 @@ router = APIRouter(
 
 @router.get("/")
 async def all_users(db: Annotated[Session,Depends(get_db)]):
-    result = db.scalar(select(User).all())
+    result = db.scalars(select(User)).all()
     return result
 
 @router.get("/{user_id}")
