@@ -1,4 +1,6 @@
 from pydantic import BaseModel
+from sqlalchemy import Boolean
+
 
 class CreateUser(BaseModel):
     username: str
@@ -12,10 +14,13 @@ class UpdateUser(BaseModel):
     age: int
 
 class CreateTask(BaseModel): 
-    title: str
-    content: str
     priority: int
-    
+    user_id: int
+    content: str
+    title: str
+    complited : bool
+    slug: str
+
 class UpdateTask(BaseModel):
     title: str
     content: str 
